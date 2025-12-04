@@ -198,28 +198,7 @@ export default function App() {
                 </div>
               )}
 
-              {activeTab === 'impact' && (
-                <div>
-                  <h3 className="tab-title">Environmental Impact</h3>
-                  <div className="impact-grid">
-                    <div className="impact-card green">
-                      <div className="impact-icon">🌱</div>
-                      <div className="impact-value green-text">195 Trees</div>
-                      <div className="impact-label">Equivalent planted annually</div>
-                    </div>
-                    <div className="impact-card blue">
-                      <div className="impact-icon">🚗</div>
-                      <div className="impact-value blue-text">17,200 Miles</div>
-                      <div className="impact-label">Car emissions offset</div>
-                    </div>
-                    <div className="impact-card yellow">
-                      <div className="impact-icon">⚡</div>
-                      <div className="impact-value yellow-text">8,760 kWh</div>
-                      <div className="impact-label">Clean energy generated</div>
-                    </div>
-                  </div>
-                </div>
-              )}
+              
             </div>
           </div>
         </div>

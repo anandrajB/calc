@@ -300,57 +300,6 @@
 }
 
 
-.impact-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.impact-card {
-  text-align: center;
-  padding: 20px;
-  border-radius: 12px;
-}
-
-.impact-card.green {
-  background: #f0fdf4;
-}
-
-.impact-card.blue {
-  background: #eff6ff;
-}
-
-.impact-card.yellow {
-  background: #fef3c7;
-}
-
-.impact-icon {
-  font-size: 48px;
-  margin-bottom: 8px;
-}
-
-.impact-value {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-
-.impact-value.green-text {
-  color: #10b981;
-}
-
-.impact-value.blue-text {
-  color: #3b82f6;
-}
-
-.impact-value.yellow-text {
-  color: #f59e0b;
-}
-
-.impact-label {
-  color: #64748b;
-  font-size: 14px;
-}
 
 
 .dialog-overlay {
@@ -409,11 +358,11 @@
 }
 
 .form-input:focus {
-  border-color: #667eea;
+  border-color: #c91322;
 }
 
 .form-hint {
-  color: #64748b;
+  color: #a31738;
   font-size: 12px;
   margin-top: 6px;
 }
@@ -429,7 +378,7 @@
   flex: 1;
   padding: 10px;
   background: #f1f5f9;
-  color: #64748b;
+  color: #c61e31;
   border: none;
   border-radius: 8px;
   font-size: 14px;
