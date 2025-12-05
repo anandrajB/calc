@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import './App.css';
 import ivebackground from './assets/ivebackground.avif';
+import AutocompleteSearch from './AutocompleteSearch';
 
 export default function App() {
   const [selectedOption, setSelectedOption] = useState('residential');
@@ -12,7 +13,8 @@ export default function App() {
   const [kwhRating, setKwhRating] = useState('');
   const [inputType, setInputType] = useState('bill');
   const [activeTab, setActiveTab] = useState('savings');
-
+  const [searchBox, setSearchBox] = useState(null);
+  const [locationData, setLocationData] = useState({ address: '', latitude: null, longitude: null });
   const options = [
     { id: 'residential', label: 'Residential', icon: '🏠' },
     { id: 'commercial', label: 'Commercial', icon: '🏢' },
@@ -54,9 +56,20 @@ export default function App() {
   };
 
   const handleSubmit = () => {
-    if (location && (electricityBill || kwhRating)) {
+    // if (location && (electricityBill || kwhRating)) {
       setShowDialog(false);
       setShowResults(true);
+    // }
+  };
+
+  const handlePlaceSelect = () => {
+    if (searchBox && searchBox.getPlace()) {
+      const place = searchBox.getPlace();
+      setLocationData({
+        address: place.formatted_address,
+        latitude: place.geometry?.location.lat(),
+        longitude: place.geometry?.location.lng(),
+      });
     }
   };
 
@@ -150,7 +163,7 @@ export default function App() {
 
             <div className="tabs-section">
               <div className="tabs-header">
-                {['savings', 'system', 'impact'].map((tab) => (
+                {['savings', 'system'].map((tab) => (
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
@@ -211,13 +224,20 @@ export default function App() {
             <div>
               <div className="form-group">
                 <label className="form-label">Location</label>
-                <input
+                {/* <input
                   type="text"
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                   placeholder="Enter your address"
                   className="form-input"
-                />
+                /> */}
+                <AutocompleteSearch
+                locationData={locationData}
+                setLocationData={setLocationData}
+                handlePlaceSelect={handlePlaceSelect}
+                setSearchBox={setSearchBox}
+                searchBox={searchBox}
+              />
                 
               </div>
 
@@ -266,7 +286,7 @@ export default function App() {
                 <button onClick={() => setShowDialog(false)} className="cancel-btn">
                   Cancel
                 </button>
-                <button onClick={handleSubmit} className="submit-btn">
+                <button onClick={handleSubmit} disabled={(locationData && electricityBill || locationData && kwhRating ) ? false : true} className="submit-btn">
                   Calculate
                 </button>
               </div>

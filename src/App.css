@@ -85,7 +85,7 @@
 
 .option-card.selected {
   background: rgba(255, 255, 255, 0.25);
-  border: 2px solid rgb(142, 22, 22);
+  border: 1.1px solid rgb(142, 22, 22);
   transform: scale(1.02);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
@@ -428,6 +428,10 @@
   display: block;
 }
 
+.submit-btn:disabled{
+  background-color: #1e293b;
+  background-image: linear-gradient(to right, #381418 0%, #2d060b  51%, #D31027  100%);
+}
 .submit-btn:hover {
   background-position: right center; /* change the direction of the change here */
   color: #fff;
